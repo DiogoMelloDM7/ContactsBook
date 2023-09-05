@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+
+<h1 class='titulo'>Contacts Book</h1>
+<div class="formulario">
+<form method='post'> 
+    {% csrf_token %}
+    <label class="label" for='inome'>Nome</label>
+    <input class="input" type='text' name='nome' id='inome' required><br>
+    <label class="label" for='inumero'>Número </label>
+    <input class="input" type='text' name='numero' id='inumero' required><br>
+    <label class="label" for='iemail'>E-mail </label>
+    <input class="input" type='email' name='email' id='iemail' required><br>
+    <button type='submit' name='add' class="botao">ADICIONAR <span class="material-symbols-outlined">person_add</span></button>
+</form>
+</div>
+<div class="formulario2">
+    <form method='post'>
+        {% csrf_token %}
+    {% for contato in contatos %}
+        <input name='id' type="hidden" value='{{ contato.id }}'>
+        <label class="label" for='inome{{ contato.id }}'>Nome</label>
+        <input name="nome{{ contato.id }}" id="inome{{ contato.id }}" class='input2' value='{{ contato.nome }}'>
+        <label class="label" for='inumero{{ contato.id }}'>Número</label>
+        <input name="numero{{ contato.id }}" id="inumero{{ contato.id }}" class='input2' value='{{ contato.telefone }}'>
+        <label class="label" for='iemail{{ contato.id }}'>E-mail</label>
+        <input name="email{{ contato.id }}" id="iemail{{ contato.id }}" class='input2'type'email' value='{{ contato.email }}'>
+        <button type="submit" class="edit" name="edit{{ contato.id }}"><span class="material-symbols-outlined">edit</span></button>
+        <button type="submit" class="delete" name="delete{{ contato.id }}"><span class="material-symbols-outlined">delete</span></button>
+
+        <br>
+    {% endfor %}
+    </form>
+</div>
+
+</body>
+</html>
