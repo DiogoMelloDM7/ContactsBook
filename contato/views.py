@@ -18,28 +18,26 @@ def homepage(request):
         Contato.objects.create(telefone=numero, nome=nome, email=email)
         
         
-    for contato_individual in contatos:
-
-        if f'edit{contato_individual.id}' in request.POST:
-            id = contato_individual.id
+    if 'edit' in request.POST:
+        for contato in contatos:
+            id = contato.id
             nome = request.POST.get(f'nome{id}')
             numero = request.POST.get(f'numero{id}')
             email = request.POST.get(f'email{id}')
-            contato = Contato.objects.get(id=id)
             contato.nome = nome
             contato.telefone = numero
             contato.email = email
-            print(nome, numero, email)
             contato.save()
-            return render(request, 'homepage.html', context)
+
             
-        if f'delete{contato_individual.id}' in request.POST:
-            id = contato_individual.id
-            contato = Contato.objects.get(id=id)
-            contato.delete()
-            return render(request, 'homepage.html', context)
-    
-    
     return render(request, 'homepage.html', context)
 
 
+
+
+def excluirContato(request, contato_id):
+    if request.method == "DELETE":
+        contato = get_object_or_404(Contato, id=contato_id)
+        contato.delete()
+        return JsonResponse({'success': True})
+    return JsonResponse({'success': False})

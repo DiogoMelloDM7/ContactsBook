@@ -12,7 +12,7 @@
 
 <h1 class='titulo'>Contacts Book</h1>
 <div class="formulario">
-<form method='post'> 
+<form method='post' action=""> 
     {% csrf_token %}
     <label class="label" for='inome'>Nome</label>
     <input class="input" type='text' name='nome' id='inome' required><br>
@@ -23,8 +23,10 @@
     <button type='submit' name='add' class="botao">ADICIONAR <span class="material-symbols-outlined">person_add</span></button>
 </form>
 </div>
+{% if contatos %}
 <div class="formulario2">
-    <form method='post'>
+
+    <form method='post' action="">
         {% csrf_token %}
     {% for contato in contatos %}
         <input name='id' type="hidden" value='{{ contato.id }}'>
@@ -34,13 +36,14 @@
         <input name="numero{{ contato.id }}" id="inumero{{ contato.id }}" class='input2' value='{{ contato.telefone }}'>
         <label class="label" for='iemail{{ contato.id }}'>E-mail</label>
         <input name="email{{ contato.id }}" id="iemail{{ contato.id }}" class='input2'type'email' value='{{ contato.email }}'>
-        <button type="submit" class="edit" name="edit{{ contato.id }}"><span class="material-symbols-outlined">edit</span></button>
-        <button type="submit" class="delete" name="delete{{ contato.id }}"><span class="material-symbols-outlined">delete</span></button>
+        <button type="submit" class="edit" name="edit"><span class="material-symbols-outlined">edit</span></button>
+        <button class="delete" onclick="excluirContato('{{ contato.id }}')"><span class="material-symbols-outlined">delete</span></button>
 
         <br>
     {% endfor %}
     </form>
 </div>
-
+{% endif %}
+<script src="{% static 'js/script.js' %}"></script>
 </body>
 </html>
