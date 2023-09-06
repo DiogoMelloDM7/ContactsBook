@@ -14,11 +14,11 @@
 <div class="formulario">
 <form method='post' action=""> 
     {% csrf_token %}
-    <label class="label" for='inome'>Nome</label>
+    <label class="label" for='inome'>Name</label>
     <input class="input" type='text' name='nome' id='inome' required><br>
-    <label class="label" for='inumero'>Número </label>
+    <label class="label" for='inumero'>Phone </label>
     <input class="input" type='text' name='numero' id='inumero' required><br>
-    <label class="label" for='iemail'>E-mail </label>
+    <label class="label" for='iemail'>Email </label>
     <input class="input" type='email' name='email' id='iemail' required><br>
     <button type='submit' name='add' class="botao">ADICIONAR <span class="material-symbols-outlined">person_add</span></button>
 </form>
@@ -30,16 +30,16 @@
         {% csrf_token %}
     {% for contato in contatos %}
         <input name='id' type="hidden" value='{{ contato.id }}'>
-        <label class="label" for='inome{{ contato.id }}'>Nome</label>
+        <label class="label" for='inome{{ contato.id }}'>Name</label>
         <input name="nome{{ contato.id }}" id="inome{{ contato.id }}" class='input2' value='{{ contato.nome }}'>
-        <label class="label" for='inumero{{ contato.id }}'>Número</label>
+        <label class="label" for='inumero{{ contato.id }}'>Phone </label>
         <input name="numero{{ contato.id }}" id="inumero{{ contato.id }}" class='input2' value='{{ contato.telefone }}'>
-        <label class="label" for='iemail{{ contato.id }}'>E-mail</label>
+        <label class="label" for='iemail{{ contato.id }}'>Email</label>
         <input name="email{{ contato.id }}" id="iemail{{ contato.id }}" class='input2'type'email' value='{{ contato.email }}'>
         <button type="submit" class="edit" name="edit"><span class="material-symbols-outlined">edit</span></button>
         <button class="delete" onclick="excluirContato('{{ contato.id }}')"><span class="material-symbols-outlined">delete</span></button>
-
         <br>
+        <div style="background-color:white; height:2px; width: 100%; margin-top: 5px;"></div>
     {% endfor %}
     </form>
 </div>

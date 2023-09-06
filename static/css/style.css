@@ -15,7 +15,7 @@ body{
 }
 
 .input{
-    margin-top: 20px; width: 300px; border-radius: 10px; background-color: rgb(218, 253, 253); height: 30px; font-size: 1.5rem;
+    margin-top: 20px; width: 300px; border-radius: 10px; background-color: rgb(218, 253, 253); height: 30px; font-size: 1.5rem; 
 }
 
 .label{
@@ -40,4 +40,34 @@ body{
 
 .delete{
     background-color: red; border-radius: 5px; width: 30px; cursor: pointer;
+}
+
+
+@media screen and (max-width: 1450px) {
+    .formulario2{
+        background-color: rgb(0, 17, 90); margin-left:auto; margin-right:auto; min-height: 200px; width: 80%; border-radius: 10px; padding: 10px 15px; text-align: center; color: rgba(255, 255, 255, 0.904); margin-top: 20px; 
+    }
+
+    .input2{
+        margin-top: 20px; width: 200px; border-radius: 10px; background-color: rgb(218, 253, 253); height: 30px; font-size: 1.5rem; margin-right:20px ;
+    }
+    
+}
+
+@media screen and (max-width: 768px) {
+    .formulario2{
+        background-color: rgb(0, 17, 90); margin-left:auto; margin-right:auto; min-height: 200px; width: 80%; border-radius: 10px; padding: 10px 15px; color: rgba(255, 255, 255, 0.904); margin-top: 20px; 
+    }
+
+    .input2{
+        margin-top: 20px; width: 80%; border-radius: 10px; background-color: rgb(218, 253, 253); height: 30px; font-size: 1.5rem; margin-right:20px ; margin-bottom: 10px;
+    }
+
+    .input{
+        margin-top: 20px; width: 80%; border-radius: 10px; background-color: rgb(218, 253, 253); height: 30px; font-size: 1.5rem; 
+}
+    
+.botao{
+    background-color: green; font-size: 1rem; font-weight: bold; width: 80%; height: 50px; margin-top: 20px; cursor: pointer; color: white; text-align: center; vertical-align: center; border-radius: 10px;
+}
 }
